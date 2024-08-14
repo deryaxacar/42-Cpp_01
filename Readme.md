@@ -6,10 +6,10 @@ C++ dilinde bellek tahsisi konusunu kapsamlı bir şekilde açıklar. İki ana b
 
 1. [Giriş](#giriş)
 2. [Statik Bellek Tahsisi](#statik-bellek-tahsisi)
-3. [Dinamik Bellek Tahsisi](#dinamik-bellek-tahsisi)
-4. [Örnekler](#örnekler)
-5. [En İyi Uygulamalar](#en-iyi-uygulamalar)
-6. [Kaynaklar](#kaynaklar)
+3. [Özellikler](#özellikler)
+4. [Dinamik Bellek Tahsisi](#dinamik-bellek-tahsisi)
+5. [Özellikler](#özellikler)
+
 
 ## Giriş
 
@@ -35,3 +35,26 @@ int main() {
     std::cout << "Statik değişken: " << staticVar << std::endl;
     return 0;
 }
+```
+
+## Dinamik Bellek Tahsisi
+
+Dinamik bellek tahsisi, programın çalışma zamanında bellek alanlarını tahsis etme yöntemidir. Bu yöntem, belleği daha esnek ve verimli bir şekilde yönetmeyi sağlar.
+
+### Özellikler
+
+- **Çalışma Zamanında Tahsis**: Bellek alanları program çalışırken tahsis edilir.
+- **Esnek Boyut**: Bellek boyutu çalışma zamanında belirlenebilir ve değiştirilebilir.
+- **Manuel Yönetim**: Bellek otomatik olarak yönetilir ve serbest bırakılır.
+
+
+### İşlevler 
+
+- **new:** Dinamik bellek tahsisi yapar ve bir nesne oluşturur.
+- **delete:** new ile tahsis edilen belleği serbest bırakır.
+- **new[]:** Dinamik diziler için bellek tahsisi yapar.
+- **delete[]:** new[] ile tahsis edilen dizilerin belleğini serbest bırakır.
+
+---
+
+Bu README dosyası, C++ dilinde bellek tahsisi ve yönetimi hakkında temel bilgileri sağlar ve hem statik hem de dinamik bellek tahsisi ile ilgili kod örnekleri sunar. Herhangi bir sorunuz varsa, lütfen bana bildirin!
