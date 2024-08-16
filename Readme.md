@@ -14,6 +14,7 @@
         - [Stack Bellek](#stack-bellek)
         - [Heap Bellek](#heap-bellek)
     - [Kullanılabilir işlevler](#kullanılabilir-işlevler)
+    - [Örnekler](#örnekler)
     - [Sonuç](#sonuç)
  
 ---
@@ -25,40 +26,11 @@ Bellek yönetimi, C++ programlamada verimli yazılım geliştirme için hayati b
 ### Statik Bellek
 Statik bellek, programın derleme zamanında tahsis edilen ve programın tüm çalışma süresi boyunca varlığını sürdüren bellek alanıdır. Statik bellek, genellikle global değişkenler, statik değişkenler ve sabit boyutlu veri yapıları için kullanılır. Bu tür bellek, program kapandığında otomatik olarak serbest bırakılır.
 
-**Örnek:**
-```cpp
-#include <iostream>
-
-int main() {
-    int staticVar = 10; // Statik olarak tahsis edilmiş bir değişken
-    std::cout << "Statik değişken: " << staticVar << std::endl;
-    return 0;
-}
-```
-
 ---
 
 ### Dinamik Bellek
 
 Dinamik bellek, programın çalışma zamanında ihtiyaç duyulduğunda tahsis edilen bellek alanıdır. Bu bellek, new operatörü kullanılarak ayrılır ve delete operatörü ile manuel olarak serbest bırakılır. Dinamik bellek, esnek boyutlarda veri yapıları ve değişkenler için kullanılır, ancak doğru yönetilmezse bellek sızıntılarına yol açabilir.
-
-**Örnek:**
-```cpp
-#include <iostream>
-
-int main() {
-    // Dinamik bellek tahsisi
-    int* dynamicVar = new int; // Bellek tahsisi yapılır ve işaretçi `dynamicVar` bu belleği işaret eder
-    *dynamicVar = 20; // Tahsis edilen bellek alanına değer atanır
-
-    std::cout << "Dinamik değişken: " << *dynamicVar << std::endl;
-
-    // Dinamik belleğin serbest bırakılması
-    delete dynamicVar; // `new` ile tahsis edilen bellek serbest bırakılır
-
-    return 0;
-}
-```
 
 ---
 
@@ -93,6 +65,48 @@ int main() {
 - **delete[]:** new[] ile tahsis edilen dizilerin belleğini serbest bırakır.
 
 ---
+
+### Örnekler
+
+```cpp
+#include "Zombie.hpp"
+
+int main()
+{
+    Zombie *zombie1 = newZombie("Foo"); // Dinamik bellek tahsisi: new operatörü ile heap'te bir Zombie nesnesi oluşturulur.
+    zombie1->announce(); // Zombie nesnesinin announce() fonksiyonu çağrılır.
+
+    randomChump("Bar"); // Statik bellek tahsisi: randomChump fonksiyonunda stack üzerinde bir geçici Zombie nesnesi oluşturulur.
+    delete zombie1; // Dinamik bellek serbest bırakma: heap'te tahsis edilen Zombie nesnesi serbest bırakılır.
+
+    return 0;
+}
+```
+
+`newZombie("Foo")` fonksiyonu ile heap üzerinde bir Zombie nesnesi oluşturulup, zombie1 işaretçisine atanır. 
+```cpp
+#include "Zombie.hpp"
+
+Zombie* newZombie(std::string name){
+    return new Zombie(name); // Bu nesne dinamik olarak tahsis edilmiştir ve delete operatörü ile serbest bırakılmalıdır.
+}
+```
+ `randomChump("Bar")` fonksiyonu çağrıldığında, stack üzerinde geçici bir Zombie nesnesi oluşturulur. Bu nesne fonksiyon tamamlandığında otomatik olarak serbest bırakılır.
+
+```cpp
+#include "Zombie.hpp"
+
+void randomChump(std::string name)
+{
+    Zombie zombie(name);
+    zombie.announce();
+}
+
+```
+ `delete zombie1` satırı, new operatörü ile tahsis edilen heap bellek alanını serbest bırakır. Bu işlem, bellek sızıntılarını önlemek için gereklidir.
+```cpp
+  delete zombie1; 
+```
 
 ### Sonuç
 Stack ve heap bellekleri, C++'ta bellek yönetiminin temel yapı taşlarıdır. Stack, hızlı ve otomatik bir bellek yönetimi sunarken, heap, esneklik ve dinamik bellek tahsisi gerektiren durumlar için uygundur. Her iki bellek türünün de doğru bir şekilde kullanılması, programın performansını ve güvenilirliğini artıracaktır.
