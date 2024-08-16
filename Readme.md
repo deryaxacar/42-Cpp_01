@@ -11,11 +11,15 @@
     - [Statik Bellek](#statik-bellek)
     - [Dinamik Bellek](#dinamik-bellek)
     - [Stack ve Heap Belleği Arasındaki Fark](#stack-ve-heap-belleği-arasındaki-fark)
-        - [Stack Bellek](#stack-bellek)
-        - [Heap Bellek](#heap-bellek)
     - [Kullanılabilir işlevler](#kullanılabilir-işlevler)
     - [Örnekler](#örnekler)
     - [Sonuç](#sonuç)
+- [Pointer ve Referans İşaretçileri](pointer-ve-referans-işaretçileri)
+  - [Pointer Nedir?](#pointer-nedir)
+  - [Referans Nedir?](#referans-nedir)
+  - [Pointer ve Referans Arasındaki Farklar](#pointer-ve-referans-arasındaki-farklar)
+  - [Örnek](#örnek)
+  - [Sonuç](#sonuç)
  
 ---
 
@@ -34,27 +38,18 @@ Dinamik bellek, programın çalışma zamanında ihtiyaç duyulduğunda tahsis e
 
 ---
 
-<h2 align="center">Stack ve Heap Belleği Arasındaki Fark</h2> 
+<h2 align="center">Stack ve Heap Belleği Arasındaki Fark</h2>
 
 ---
 
-### Stack Bellek
-- **Statik Bellek Tahsisi:** Stack, statik bellek tahsisi için kullanılır. Bellek, programın derleme zamanında belirlenir.
-- **Yerel Değişkenler:** Fonksiyon çağrıları sırasında yerel değişkenler ve geçici veriler stack bellekte saklanır.
-- **Otomatik Bellek Yönetimi:** Stack bellekteki bellek, fonksiyon tamamlandığında otomatik olarak serbest bırakılır.
-- **Performans:** Stack bellek hızlıdır ve sınırlı bir boyuta sahiptir.
-- **Derleme Zamanında Tahsis:** Bellek alanları program derlenirken tahsis edilir.
-- **Sabit Boyut:** Stack belleğin boyutu sabittir ve çalışma sırasında değiştirilemez.
-
----
-
-### Heap Bellek
-- **Dinamik Bellek Tahsisi:** Heap, dinamik bellek tahsisi için kullanılır. Bellek, programın çalışma zamanında `new` operatörü ile ayrılır.
-- **Esneklik:** Heap, büyük ve değişken boyutlu veri yapıları için uygundur.
-- **Manuel Bellek Yönetimi:** Heap belleği yönetmek için `delete` operatörü ile manuel olarak serbest bırakılmalıdır.
-- **Performans:** Heap bellek, stack belleğe göre daha yavaş çalışır ve daha fazla işlem süresi gerektirir.
-- **Çalışma Zamanında Tahsis:** Bellek alanları program çalışırken tahsis edilir.
-- **Esnek Boyut:** Heap belleğin boyutu çalışma zamanında belirlenebilir ve değiştirilebilir.
+| Özellik                   | Stack Bellek                                       | Heap Bellek                                        |
+|---------------------------|-----------------------------------------------------|-----------------------------------------------------|
+| **Bellek Tahsisi**        | Statik bellek tahsisi için kullanılır. Derleme zamanında belirlenir. | Dinamik bellek tahsisi için kullanılır. Çalışma zamanında `new` operatörü ile tahsis edilir. |
+| **Kullanım Alanları**     | Yerel değişkenler ve geçici veriler.               | Büyük ve değişken boyutlu veri yapıları.           |
+| **Bellek Yönetimi**       | Otomatik olarak yönetilir; fonksiyon tamamlandığında serbest bırakılır. | Manuel olarak yönetilmelidir; `delete` operatörü ile serbest bırakılmalıdır. |
+| **Performans**            | Hızlı ve verimlidir, sınırlı bir boyuta sahiptir.  | Daha yavaş çalışır ve daha fazla işlem süresi gerektirir. |
+| **Tahsis Zamanı**         | Derleme zamanında tahsis edilir.                   | Çalışma zamanında tahsis edilir.                    |
+| **Boyut**                 | Sabit boyut; çalışma sırasında değiştirilemez.     | Esnek boyut; çalışma zamanında belirlenebilir ve değiştirilebilir. |
 
 ---
 
@@ -113,3 +108,94 @@ Stack ve heap bellekleri, C++'ta bellek yönetiminin temel yapı taşlarıdır. 
 
 ---
 
+<h2 align="center">Pointer ve Referans İşaretçileri</h2> 
+
+C++ dilinde, **pointer** (işaretçi) bir değişkenin bellek adresini tutar ve bu adrese erişim sağlar. Pointerlar, bellek yönetimi ve dinamik veri yapıları için kullanılırken, **referans** ise bir değişkenin başka bir adıdır ve orijinal değişkeni doğrudan gösterir. Referanslar, işaretçilerden daha güvenli bir kullanım sağlar çünkü referanslar oluşturulduklarında hemen bir değişkene bağlanır ve bu bağlama daha sonradan değiştirilemez.
+
+---
+
+### Pointer Nedir?
+
+Pointer (işaretçi), bir değişkenin bellek adresini tutan bir değişkendir. İşaretçilerin temel özellikleri şunlardır:
+
+- **Tanım:** Bir işaretçi, bir değişkenin bellek adresini saklar ve bu adrese erişim sağlar.
+- **Tanımlama:** İşaretçi değişkenleri `*` sembolü ile tanımlanır.
+- **Kullanım:** Bir işaretçiye bir adres atanabilir ve bu adres üzerinden veri erişilebilir.
+
+---
+
+### Referans Nedir?
+Referans, bir değişkenin başka bir isimle ifade edilmesidir. Referanslar şu özelliklere sahiptir:
+
+- **Tanım:** Referans, bir değişkenin başka bir adıdır. Referanslar, orijinal değişkeni doğrudan gösterir.
+- **Tanımlama:** Referanslar & sembolü ile tanımlanır ve bir değişkene atanabilir.
+- **Kullanım:** Referanslar, orijinal değişkenle aynı bellek alanını paylaşır ve bu yüzden referansa yapılan değişiklikler orijinal değişkeni de etkiler.
+
+<h2 align="center">Pointer ve Referans Arasındaki Farklar</h2>
+
+
+| Özellik            | Pointer                             | Referans                           |
+|--------------------|-------------------------------------|------------------------------------|
+| **Bellek Yönetimi**| Bellek adresini tutar.              | Doğrudan bir değişkenin adıdır.    |
+| **Null Değeri**    | `nullptr` ile boş olabilir.         | Boş olamaz; her zaman geçerli bir değişkene bağlanır. |
+| **Değer Atama**    | Yeni bir adres atanabilir.          | Bir kez bağlanır ve bağlandığı değişken değiştirilemez. |
+| **Kullanım**       | Dinamik bellek yönetimi gibi ileri düzey işlemler için kullanılır. | Genellikle fonksiyon parametreleri ve geri dönüş değerleri için kullanılır. |
+
+---
+
+### Örnek
+
+```cpp
+#include <iostream>
+#include <string>
+
+int main()
+{
+    // Bir string değişkeni tanımlanır ve değer atanır.
+    std::string string = "HI THIS IS BRAIN";
+    
+    // 'string' değişkeninin adresini tutan bir işaretçi tanımlanır.
+    std::string *stringPTR = &string;
+    
+    // 'string' değişkenine referans olarak bağlanan bir referans değişkeni tanımlanır.
+    std::string &stringREF = string;
+
+    // 'string' değişkeninin bellek adresi yazdırılır.
+    std::cout << "string address: " << &string << std::endl;
+    
+    // 'stringPTR' işaretçisinin tuttuğu bellek adresi yazdırılır.
+    std::cout << "stringPTR address: " << stringPTR << std::endl;
+    
+    // 'stringREF' referansının bellek adresi yazdırılır.
+    // Referans değişkenin adresi, bağlı olduğu 'string' değişkenin adresiyle aynı olacaktır.
+    std::cout << "stringREF address: " << &stringREF << std::endl;
+    
+    // 'string' değişkeninin değeri yazdırılır.
+    std::cout << "string value: " << string << std::endl;
+    
+    // 'stringPTR' işaretçisinin işaret ettiği adresin değeri yazdırılır.
+    std::cout << "stringPTR value: " << *stringPTR << std::endl;
+    
+    // 'stringREF' referansının değeri yazdırılır.
+    // Referans, 'string' değişkeninin kendisini ifade eder, bu yüzden değer aynı olacaktır.
+    std::cout << "stringREF value: " << stringREF << std::endl;
+}
+```
+
+kodun çıktısı şu şekiilde olucaktır. 
+```shell
+string address: 0x7fffc8f5a800
+stringPTR address: 0x7fffc8f5a800
+stringREF address: 0x7fffc8f5a800
+string value: HI THIS IS BRAIN
+stringPTR value: HI THIS IS BRAIN
+stringREF value: HI THIS IS BRAIN
+```
+
+---
+
+### Sonuç
+
+yani kısaca, işaretçi ve referanslar, değişkenin bellekteki adresine erişimi sağlayarak, değişkenin değerini değiştirme veya okuma işlemleri yapabilir. Bu, işaretçiler ve referansların aynı veri üzerinde işlem yapabilme yeteneğini gösterir.
+
+---
