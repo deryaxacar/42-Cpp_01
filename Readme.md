@@ -1,32 +1,31 @@
-## C++ Memory Allocation 
+<div align="center">
+  <h1>C++ Module 01</h1> <img src="https://cdn-icons-png.flaticon.com/512/6132/6132222.png" alt="C++ Logo" width="65"></br>
+</div>
+<p align="center">Bu proje, C++ dilinde temel programlama becerilerini geliştirmek için hazırlanmıştır. Veri türleri, kontrol yapıları ve fonksiyonlar üzerine uygulamalı çalışmalar yapılır. Ayrıca, sınıf tanımlamaları ve bellek yönetimi gibi konular da ele alınır.</p>
 
-C++ dilinde bellek tahsisi konusunu kapsamlı bir şekilde açıklar. İki ana bellek tahsisi türünü ele alacağız: **statik bellek tahsisi** ve **dinamik bellek tahsisi**.
+---
 
 ## İçindekiler
 
-1. [Giriş](#giriş)
-2. [Statik Bellek Tahsisi](#statik-bellek-tahsisi)
-3. [Özellikler](#özellikler)
-4. [Dinamik Bellek Tahsisi](#dinamik-bellek-tahsisi)
-5. [Özellikler](#özellikler)
+- [Bellek Tahsisi Türleri](#bellek-tahsisi-türleri)
+    - [Statik Bellek](#statik-bellek)
+    - [Dinamik Bellek](#dinamik-bellek)
+    - [Stack ve Heap Belleği Arasındaki Fark](#stack-ve-heap-belleği-arasındaki-fark)
+        - [Stack Bellek](#stack-bellek)
+        - [Heap Bellek](#heap-bellek)
+    - [Kullanılabilir işlevler](#kullanılabilir-işlevler)
+    - [Sonuç](#sonuç)
+ 
+---
 
+<h2 align="center">Bellek Tahsisi Türleri</h2> 
 
-## Giriş
+Bellek yönetimi, C++ programlamada verimli yazılım geliştirme için hayati bir konudur. C++'ta bellek yönetimi, iki ana bellek bölgesi olan **stack** ve **heap** üzerinde gerçekleşir.
 
-Bellek tahsisi, bir programın çalışması sırasında bellek alanlarını yönetme sürecidir. C++ dilinde, bellek tahsisi iki ana türde yapılır: statik ve dinamik.
+### Statik Bellek
+Statik bellek, programın derleme zamanında tahsis edilen ve programın tüm çalışma süresi boyunca varlığını sürdüren bellek alanıdır. Statik bellek, genellikle global değişkenler, statik değişkenler ve sabit boyutlu veri yapıları için kullanılır. Bu tür bellek, program kapandığında otomatik olarak serbest bırakılır.
 
-## Statik Bellek Tahsisi
-
-Statik bellek tahsisi, derleme zamanında belirlenen ve programın çalışma süresi boyunca değişmeyen bellek alanlarının tahsisidir. Bu tür bellek tahsisi genellikle sabit boyutlu veri yapıları ve değişkenler için kullanılır.
-
-### Özellikler
-
-- **Derleme Zamanında Tahsis**: Bellek alanları program derlenirken tahsis edilir.
-- **Sabit Boyut**: Bellek boyutu sabittir ve çalışma sırasında değiştirilemez.
-- **Otomatik Yönetim**: Bellek otomatik olarak yönetilir ve serbest bırakılır.
-
-### Örnek
-
+**Örnek:**
 ```cpp
 #include <iostream>
 
@@ -37,19 +36,57 @@ int main() {
 }
 ```
 
-## Dinamik Bellek Tahsisi
+---
 
-Dinamik bellek tahsisi, programın çalışma zamanında bellek alanlarını tahsis etme yöntemidir. Bu yöntem, belleği daha esnek ve verimli bir şekilde yönetmeyi sağlar.
+### Dinamik Bellek
 
-### Özellikler
+Dinamik bellek, programın çalışma zamanında ihtiyaç duyulduğunda tahsis edilen bellek alanıdır. Bu bellek, new operatörü kullanılarak ayrılır ve delete operatörü ile manuel olarak serbest bırakılır. Dinamik bellek, esnek boyutlarda veri yapıları ve değişkenler için kullanılır, ancak doğru yönetilmezse bellek sızıntılarına yol açabilir.
 
-- **Çalışma Zamanında Tahsis**: Bellek alanları program çalışırken tahsis edilir.
-- **Esnek Boyut**: Bellek boyutu çalışma zamanında belirlenebilir ve değiştirilebilir.
-- **Manuel Yönetim**: Bellek otomatik olarak yönetilir ve serbest bırakılır.
+**Örnek:**
+```cpp
+#include <iostream>
 
+int main() {
+    // Dinamik bellek tahsisi
+    int* dynamicVar = new int; // Bellek tahsisi yapılır ve işaretçi `dynamicVar` bu belleği işaret eder
+    *dynamicVar = 20; // Tahsis edilen bellek alanına değer atanır
 
-### İşlevler 
+    std::cout << "Dinamik değişken: " << *dynamicVar << std::endl;
 
+    // Dinamik belleğin serbest bırakılması
+    delete dynamicVar; // `new` ile tahsis edilen bellek serbest bırakılır
+
+    return 0;
+}
+```
+
+---
+
+<h2 align="center">Stack ve Heap Belleği Arasındaki Fark</h2> 
+
+---
+
+### Stack Bellek
+- **Statik Bellek Tahsisi:** Stack, statik bellek tahsisi için kullanılır. Bellek, programın derleme zamanında belirlenir.
+- **Yerel Değişkenler:** Fonksiyon çağrıları sırasında yerel değişkenler ve geçici veriler stack bellekte saklanır.
+- **Otomatik Bellek Yönetimi:** Stack bellekteki bellek, fonksiyon tamamlandığında otomatik olarak serbest bırakılır.
+- **Performans:** Stack bellek hızlıdır ve sınırlı bir boyuta sahiptir.
+- **Derleme Zamanında Tahsis:** Bellek alanları program derlenirken tahsis edilir.
+- **Sabit Boyut:** Stack belleğin boyutu sabittir ve çalışma sırasında değiştirilemez.
+
+---
+
+### Heap Bellek
+- **Dinamik Bellek Tahsisi:** Heap, dinamik bellek tahsisi için kullanılır. Bellek, programın çalışma zamanında `new` operatörü ile ayrılır.
+- **Esneklik:** Heap, büyük ve değişken boyutlu veri yapıları için uygundur.
+- **Manuel Bellek Yönetimi:** Heap belleği yönetmek için `delete` operatörü ile manuel olarak serbest bırakılmalıdır.
+- **Performans:** Heap bellek, stack belleğe göre daha yavaş çalışır ve daha fazla işlem süresi gerektirir.
+- **Çalışma Zamanında Tahsis:** Bellek alanları program çalışırken tahsis edilir.
+- **Esnek Boyut:** Heap belleğin boyutu çalışma zamanında belirlenebilir ve değiştirilebilir.
+
+---
+
+### Kullanılabilir işlevler
 - **new:** Dinamik bellek tahsisi yapar ve bir nesne oluşturur.
 - **delete:** new ile tahsis edilen belleği serbest bırakır.
 - **new[]:** Dinamik diziler için bellek tahsisi yapar.
@@ -57,4 +94,8 @@ Dinamik bellek tahsisi, programın çalışma zamanında bellek alanlarını tah
 
 ---
 
-Bu README dosyası, C++ dilinde bellek tahsisi ve yönetimi hakkında temel bilgileri sağlar ve hem statik hem de dinamik bellek tahsisi ile ilgili kod örnekleri sunar. Herhangi bir sorunuz varsa, lütfen bana bildirin!
+### Sonuç
+Stack ve heap bellekleri, C++'ta bellek yönetiminin temel yapı taşlarıdır. Stack, hızlı ve otomatik bir bellek yönetimi sunarken, heap, esneklik ve dinamik bellek tahsisi gerektiren durumlar için uygundur. Her iki bellek türünün de doğru bir şekilde kullanılması, programın performansını ve güvenilirliğini artıracaktır.
+
+---
+
