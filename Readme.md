@@ -19,7 +19,7 @@
   - [Referans Nedir?](#referans-nedir)
   - [Pointer ve Referans Arasındaki Farklar](#pointer-ve-referans-arasındaki-farklar)
   - [Örnek](#örnek)
-  - [Sonuç](#sonuç)
+  - [Özet](#özet)
  
 ---
 
@@ -194,7 +194,7 @@ stringREF value: HI THIS IS BRAIN
 
 ---
 
-### Sonuç
+### Özet
 
 yani kısaca, işaretçi ve referanslar, değişkenin bellekteki adresine erişimi sağlayarak, değişkenin değerini değiştirme veya okuma işlemleri yapabilir. Bu, işaretçiler ve referansların aynı veri üzerinde işlem yapabilme yeteneğini gösterir.
 
