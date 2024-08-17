@@ -14,7 +14,7 @@
     - [Kullanılabilir işlevler](#kullanılabilir-işlevler)
     - [Örnekler](#örnekler)
     - [Sonuç](#sonuç)
-- [Pointer Ve Referans](pointer-ve-referans)
+- [Pointer Ve Referans İşaretçileri](#pointer-ve-referans-işaretçileri)
   - [Pointer Nedir?](#pointer-nedir)
   - [Referans Nedir?](#referans-nedir)
   - [Pointer Ve Referans Arasındaki Farklar](#pointer-ve-referans-arasındaki-farklar)
@@ -117,7 +117,7 @@ Stack ve heap bellekleri, C++'ta bellek yönetiminin temel yapı taşlarıdır. 
 
 ---
 
-<h2 align="center">Pointer Ve Referans</h2> 
+<h2 align="center">Pointer Ve Referans İşaretçileri</h2> 
 
 C++ dilinde, **pointer** (işaretçi) bir değişkenin bellek adresini tutar ve bu adrese erişim sağlar. Pointerlar, bellek yönetimi ve dinamik veri yapıları için kullanılırken, **referans** ise bir değişkenin başka bir adıdır ve orijinal değişkeni doğrudan gösterir. Referanslar, işaretçilerden daha güvenli bir kullanım sağlar çünkü referanslar oluşturulduklarında hemen bir değişkene bağlanır ve bu bağlama daha sonradan değiştirilemez.
 
