@@ -20,6 +20,8 @@
   - [Pointer Ve Referans Arasındaki Farklar](#pointer-ve-referans-arasındaki-farklar)
   - [Örnek](#örnek)
   - [Özet](#özet)
+- [Npos Nedir?](#npos-nedir)
+  - [Tanım Ve Kullanım](#tanım-ve-kullanım)
 - [Switch Nedir Ve Nasıl Kullanılır?](#switch-nedir-ve-nasıl-kullanılır)
   - [Switch Nasıl Kullanılır?](#switch-nasıl-kullanılır)
   - [Temel Yapısı](#temel-yapısı)
@@ -206,6 +208,108 @@ stringREF value: HI THIS IS BRAIN
 ### Özet
 
 yani kısaca, işaretçi ve referanslar, değişkenin bellekteki adresine erişimi sağlayarak, değişkenin değerini değiştirme veya okuma işlemleri yapabilir. Bu, işaretçiler ve referansların aynı veri üzerinde işlem yapabilme yeteneğini gösterir.
+
+---
+<h2 align="center">Npos Nedir?</h2>
+
+`std::string::npos`, C++'ta `std::string` sınıfının bir özelliğidir ve özellikle arama işlemleriyle ilgili olarak kullanılır. npos, genellikle bir arama sonucunun bulunmadığını belirtmek için kullanılır. İşte 
+
+### Tanım Ve Kullanım
+
+**Tanım:** `std::string::npos`, `std::string` sınıfında tanımlı bir sabittir ve `size_t` türünde olup, "bulunamadı" durumunu belirtmek için kullanılır. Bu sabit, genellikle `std::string::find`, `std::string::rfind`, `std::string::find_first_of` gibi metotlarda arama sonucunun bulunmadığını belirtmek için kullanılır.
+
+**Değer:** npos, `size_t` türünün maksimum değerine eşittir. Bu, npos'un en büyük `size_t` değerini temsil ettiği anlamına gelir. Bu büyük değer, pratikte npos'un hiçbir geçerli konumu temsil etmediğini gösterir.
+
+**Kullanım:** Genellikle bir arama veya bulma işleminin sonucunu kontrol etmek için kullanılır. Eğer arama sonucu npos ise, bu, aramanın başarısız olduğunu ve belirtilen alt dizinin bulunamadığını belirtir.
+
+**Örnek:**
+```cpp
+#include <iostream>
+#include <string>
+#include <fstream>
+
+int main(int ac, char **av)
+{
+    // Komut satırında doğru sayıda argüman olup olmadığını kontrol et
+    if(ac != 4)
+    {
+        std::cout << "*** You must enter 4 arguments." << std::endl ;
+        return 0;
+    }
+
+    // Girdi dosyasını aç
+    std::ifstream inputFile(av[1]);
+    if(!inputFile)
+    {
+        std::cout << "*** Entered file cannot open." << std::endl;
+        return 0;
+    }
+
+    // Aranacak ve değiştirilecek kelimeleri al
+    std::string s1 = av[2];
+    std::string s2 = av[3];
+
+    // Aranacak ve değiştirilecek kelimelerin aynı olup olmadığını kontrol et
+    if(s1 == s2)
+    {
+        std::cout << "*** Are you kidding me? Please enter different word or letter." << std::endl;
+        return 0;
+    }
+
+    // Girdi dosyası açık olduğunda işlemleri başlat
+    if(inputFile.is_open())
+    {
+        std::string line;
+        // Çıkış dosyası ismi oluştur
+        std::string r_file = av[1];
+        r_file += ".replace";
+        std::ofstream replace_file(r_file);
+
+        // Dosyadaki her bir satırı oku
+        while(std::getline(inputFile, line))
+        {
+            // Satır içinde s1'in konumunu bul
+            size_t found = line.find(s1);
+            // s1 bulundukça değiştir
+            while(found != std::string::npos)
+            {
+                // s1'i kaldır ve s2 ile değiştir
+                line.erase(found, s1.length());
+                line.insert(found, s2);
+                // Yeni satırda s1'in başka bir örneği olup olmadığını kontrol et
+                found = line.find(s1);
+            }
+            // Değiştirilmiş satırı çıkış dosyasına yaz
+            replace_file << line << std::endl;
+        }
+        // Dosyaları kapat
+        replace_file.close();
+        inputFile.close();
+    }
+    return 0;
+}
+```
+
+**Açıklama:** Bu program, bir giriş dosyasındaki belirli bir kelimeyi başka bir kelimeyle değiştirmek için tasarlanmıştır. İşte nasıl çalıştığı:
+
+**Argüman Kontrolü:** Program, komut satırında tam olarak dört argüman olup olmadığını kontrol eder. Eksik veya fazla argüman varsa hata mesajı verir.
+
+**Dosya Açma:** İlk argüman olarak verilen dosya ismini kullanarak bir `ifstream` nesnesi oluşturur ve dosyayı açar. Dosya açılamazsa, bir hata mesajı verir.
+
+**Kelimeleri Alma:** İkinci ve üçüncü argümanlar, dosyada aranacak kelime `(s1)` ve onunla değiştirilecek kelime `(s2)` olarak alınır.
+
+**Aynı Kelime Kontrolü:** Eğer `s1` ve `s2` aynıysa, bir hata mesajı verir çünkü aynı kelimeyi değiştirmek anlamsızdır.
+
+**Satır Satır İşleme:** Dosyanın her satırını okur ve `s1` kelimesini bulur. `std::string::find` fonksiyonu ile `s1`in bulunup bulunmadığını kontrol eder. `std::string::find` fonksiyonu, aranan kelimeyi bulamazsa std::string::npos döner.
+
+**Kelime Değiştirme:** `s1` bulunursa, `line.erase()` ve `line.insert()` fonksiyonları ile `s1` kelimesini `s2` ile değiştirir. find fonksiyonu tekrar kullanılarak `s1`in başka bir örneği olup olmadığı kontrol edilir.
+
+**Sonuçları Yazma:** Değiştirilmiş satırı yeni bir dosyaya yazar ve işlemi tamamladıktan sonra dosyaları kapatır.
+
+**Not**
+`std::string::npos`, `std::string::find` fonksiyonunun aranan alt diziyi bulamadığı durumlarda döndürülen özel bir sabittir.
+Bu sabit, `size_t` türünün maksimum değerine eşittir ve arama sonucunun bulunmadığını belirtir.
+Kodda `line.find(s1)` çağrısı ile `s1` kelimesinin satırda olup olmadığı kontrol edilir ve eğer npos dönerse, aranan kelime bulunamamış demektir.
 
 ---
 
