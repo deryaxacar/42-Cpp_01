@@ -14,7 +14,7 @@
     - [Kullanılabilir işlevler](#kullanılabilir-işlevler)
     - [Örnekler](#örnekler)
     - [Sonuç](#sonuç)
-- [Pointer Ve Referans İşaretçileri](#pointer-ve-referans-işaretçileri)
+- [Pointer ve Referans İşaretçileri](#pointer-ve-referans-işaretçileri)
   - [Pointer Nedir?](#pointer-nedir)
   - [Referans Nedir?](#referans-nedir)
   - [Pointer Ve Referans Arasındaki Farklar](#pointer-ve-referans-arasındaki-farklar)
