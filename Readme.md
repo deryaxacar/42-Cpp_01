@@ -212,7 +212,7 @@ yani kısaca, işaretçi ve referanslar, değişkenin bellekteki adresine erişi
 ---
 <h2 align="center">Npos Nedir?</h2>
 
-`std::string::npos`, C++'ta `std::string` sınıfının bir özelliğidir ve özellikle arama işlemleriyle ilgili olarak kullanılır. npos, genellikle bir arama sonucunun bulunmadığını belirtmek için kullanılır. İşte 
+`std::string::npos`, C++'ta `std::string` sınıfının bir özelliğidir ve özellikle arama işlemleriyle ilgili olarak kullanılır. npos, genellikle bir arama sonucunun bulunmadığını belirtmek için kullanılır.
 
 ### Tanım Ve Kullanım
 
