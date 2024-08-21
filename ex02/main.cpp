@@ -6,7 +6,7 @@
 /*   By: deryacar <deryacar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:12:48 by deryacar          #+#    #+#             */
-/*   Updated: 2024/08/20 17:12:49 by deryacar         ###   ########.fr       */
+/*   Updated: 2024/08/21 12:27:06 by deryacar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,6 @@ int main()
     std::cout << "string value: " << string << std::endl;
     std::cout << "stringPTR value: " << *stringPTR << std::endl;
     std::cout << "stringREF value: " << stringREF << std::endl;
+
+    return 0;
 }

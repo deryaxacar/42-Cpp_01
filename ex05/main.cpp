@@ -6,7 +6,7 @@
 /*   By: deryacar <deryacar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:14:08 by deryacar          #+#    #+#             */
-/*   Updated: 2024/08/20 17:14:10 by deryacar         ###   ########.fr       */
+/*   Updated: 2024/08/21 12:31:18 by deryacar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ int main()
     _harl.complain("INFO");
     _harl.complain("WARNING");
     _harl.complain("ERROR");
-
+    return 0;
 }
