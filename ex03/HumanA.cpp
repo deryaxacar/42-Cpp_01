@@ -6,14 +6,12 @@
 /*   By: deryacar <deryacar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:12:59 by deryacar          #+#    #+#             */
-/*   Updated: 2024/08/20 17:13:01 by deryacar         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:16:58 by deryacar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanA.hpp"
 #include "Weapon.hpp"
-#include <iostream>
-#include <string>
 
 HumanA::HumanA(std::string newName, Weapon &newWeapon) : weapon(newWeapon)
 {

@@ -6,7 +6,7 @@
 /*   By: deryacar <deryacar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:13:45 by deryacar          #+#    #+#             */
-/*   Updated: 2024/08/20 17:13:46 by deryacar         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:13:27 by deryacar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ int main(int ac, char **av)
         std::string r_file = av[1];
         r_file += ".replace";
         std::ofstream replace_file(r_file);
+        if (!replace_file)
+        {
+            std::cout << "*** Cannot create replace file." << std::endl;
+            return 0;
+        }
         while(std::getline(inputFile, line))
         {
             size_t found = line.find(s1);

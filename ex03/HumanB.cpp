@@ -6,14 +6,12 @@
 /*   By: deryacar <deryacar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:13:08 by deryacar          #+#    #+#             */
-/*   Updated: 2024/08/20 17:13:09 by deryacar         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:17:10 by deryacar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 #include "Weapon.hpp"
-#include <iostream>
-#include <string>
 
 HumanB::HumanB(std::string Name)
 {

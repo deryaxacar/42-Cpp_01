@@ -6,7 +6,7 @@
 /*   By: deryacar <deryacar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:14:35 by deryacar          #+#    #+#             */
-/*   Updated: 2024/08/21 12:31:09 by deryacar         ###   ########.fr       */
+/*   Updated: 2024/08/23 17:46:28 by deryacar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main(int ac, char **av)
 {
     Harl _harl;
-    if(ac > 1)
+    if(ac == 2)
         _harl.complain(av[1]);
     else
         return 0;
