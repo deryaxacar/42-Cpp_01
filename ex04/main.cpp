@@ -21,15 +21,16 @@ int main(int ac, char **av)
         std::cout << "*** You must enter 4 arguments." << std::endl ;
         return 0;
     }
+    
     std::ifstream inputFile(av[1]);
     if(!inputFile)
     {
         std::cout << "*** Entered file cannot open." << std::endl;
         return 0;
     }
+    
     std::string s1 = av[2];
     std::string s2 = av[3];
-
     if(s1 == s2)
     {
         std::cout << "*** Are u kidding me? Please enter different word or letter." << std::endl;
