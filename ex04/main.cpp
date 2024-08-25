@@ -22,11 +22,11 @@ int main(int ac, char **av)
         return 0;
     }
     std::ifstream inputFile(av[1]);
-        if(!inputFile)
-        {
-            std::cout << "*** Entered file cannot open." << std::endl;
-            return 0;
-        }
+    if(!inputFile)
+    {
+        std::cout << "*** Entered file cannot open." << std::endl;
+        return 0;
+    }
     std::string s1 = av[2];
     std::string s2 = av[3];
 
