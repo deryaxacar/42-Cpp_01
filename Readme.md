@@ -5,7 +5,7 @@
 
 ---
 
-## İçindekiler
+## İçindekiler 🔗
 
 - [Bellek Tahsisi Türleri](#bellek-tahsisi-türleri)
     - [Statik Bellek](#statik-bellek)
