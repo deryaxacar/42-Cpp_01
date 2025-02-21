@@ -532,4 +532,4 @@ Girdi ve çıktı dosyaları kapatılır.
 
 ---
 
-Bu README dosyası Derya ACAR tarafından hazırlanmıştır.
+<p align="center">© 2025 This project was created by Derya ACAR.</p>
