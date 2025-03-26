@@ -31,7 +31,7 @@ void Harl::info()
 void Harl::warning()
 {
     std::cout << "[ WARNING ]" << std::endl;
-    std::cout << "I think I deserve to have some extra bacon for free." << std::endl; 
+    std::cout << "I think I deserve to have some extra bacon for free." << std::endl;
     std::cout << "I’ve been coming for years whereas you started working here since last month." << std::endl;
     std::cout << std::endl;
 }
@@ -47,21 +47,24 @@ void Harl::complain(std::string level)
 {
     std::string data[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
     int i = 0;
-    while(!data[i].empty() && data[i] != level)
+    while (!data[i].empty() && data[i] != level)
         i++;
-    switch(i)
+    switch (i)
     {
-        case 0:
-            this->Harl::debug();
-        case 1:
-            this->Harl::info();
-        case 2:
-            this->Harl::warning();
-        case 3:
-            this->Harl::error();  
-            break;
-        default:
-            std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-            break;
+    case 0:
+        this->Harl::debug();
+        break;
+    case 1:
+        this->Harl::info();
+        break;
+    case 2:
+        this->Harl::warning();
+        break;
+    case 3:
+        this->Harl::error();
+        break;
+    default:
+        std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+        break;
     }
 }
